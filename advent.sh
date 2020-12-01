@@ -8,7 +8,7 @@ RED="\e[31m"
 GREEN="\e[32m"
 
 if [ ! -d $DIR ]; then
-  URL=https://adventofcode.com/2019/day/$1
+  URL=https://adventofcode.com/2020/day/$1
   cp -r template $DIR
   curl -f $URL/input -H "cookie: $(cat cookie)" > $DIR/input.txt 2> /dev/null
   if [ $? -ne 0 ]; then
@@ -22,5 +22,5 @@ if [ ! -d $DIR ]; then
 fi
 
 cd $DIR
-[ -f solution.cpp ] && printf "$RED\nC++\n" && make solution && ./solution
-[ -f solution.goj ] && printf "$GREEN\nGo\n" && gofmt -w solution.go && go run solution.go
+[ -f solution.cpp ] && printf "$RED\nC++\n" && make solution > /dev/null && ./solution
+[ -f solution.go ] && printf "$GREEN\nGo\n" && gofmt -w solution.go && go run solution.go

@@ -11,7 +11,7 @@ int main() {
     int num;
     vector<int> nums;
     ifstream in("input.txt");
-    while(in >> num) {
+    while (in >> num) {
         nums.push_back(num);
     }
     
