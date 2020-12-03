@@ -57,7 +57,9 @@ int main() {
         string password;
 
         in >> num1 >> dash >> num2 >> character >> colon >> password;
-        passwords.push_back(make_tuple(num1, num2, character, password));
+        if (!password.empty()) {
+            passwords.push_back(make_tuple(num1, num2, character, password));
+        }
     }
 
     cout << part1(passwords) << endl << part2(passwords) << endl;
