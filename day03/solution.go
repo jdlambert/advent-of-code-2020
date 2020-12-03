@@ -6,10 +6,10 @@ import (
 	"os"
 )
 
-func treeCount(trees [][]bool, dRow int, dCol int) (count int) {
+func treeCount(trees []string, dRow int, dCol int) (count int) {
 
 	for row, col := 0, 0; row < len(trees); row, col = row+dRow, (col+dCol)%len(trees[0]) {
-		if trees[row][col] {
+		if trees[row][col] == '#' {
 			count++
 		}
 	}
@@ -17,11 +17,11 @@ func treeCount(trees [][]bool, dRow int, dCol int) (count int) {
 	return
 }
 
-func partOne(trees [][]bool) int {
+func partOne(trees []string) int {
 	return treeCount(trees, 1, 3)
 }
 
-func partTwo(trees [][]bool) int64 {
+func partTwo(trees []string) int64 {
 	product := int64(treeCount(trees, 2, 1))
 	for i := 1; i < 9; i += 2 {
 		product *= int64(treeCount(trees, 1, i))
@@ -32,13 +32,9 @@ func partTwo(trees [][]bool) int64 {
 func main() {
 	reader, _ := os.Open("input.txt")
 	scanner := bufio.NewScanner(reader)
-	trees := make([][]bool, 0)
+	trees := make([]string, 0)
 	for scanner.Scan() {
-		row := make([]bool, 0)
-		for _, item := range scanner.Text() {
-			row = append(row, item == '#')
-		}
-		trees = append(trees, row)
+		trees = append(trees, scanner.Text())
 	}
 
 	fmt.Println(partOne(trees))
