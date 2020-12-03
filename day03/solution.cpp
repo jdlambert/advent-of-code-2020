@@ -32,9 +32,6 @@ int main() {
     vector<vector<bool>> trees;
     string line;
     while (getline(in, line)) {
-        if (line.empty()) {
-            break;
-        }
         vector<bool> row;
         for (char item : line) {
             row.push_back(item == '#');
