@@ -18,7 +18,6 @@ int part1(const vector<string> &trees) {
 }
 
 int64_t part2(const vector<string> &trees) {
-    vector<pair<int, int>> slopes;
     int64_t product = slope_trees(trees, 2, 1);
     for (int i = 1; i < 9; i += 2) {
         product *= slope_trees(trees, 1, i);
